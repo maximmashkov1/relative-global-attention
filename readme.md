@@ -10,7 +10,7 @@ Similar to regular attention, but now the attention score computation involves a
 
 When used in combination with sinusoidal positional encoding, it allows the transformer to attend to both relative and absolute positions. In theory it should perform better than RoPE in tasks that don't require long attention windows, due to higher flexibility.
 
-### KV cache usage example: autoregressive decoding:
+### KV cache usage example: autoregressive decoding
 ```python
 #in decoder layer
 def __init__(self, ...):
