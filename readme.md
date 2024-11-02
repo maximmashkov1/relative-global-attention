@@ -6,7 +6,7 @@ This implementation also allows:
 - Relative attention bias
 
 ### How does relative attention work?
-Similar to regular attention, but now the attention score computation involves an additional matrix Srel: Attention = Softmax((Q*Kt + Srel)/sqrt(dim)). To compute Srel, we learn max_length linear transformations for each head (max_length*2 if bidirectional). To obtain an entry i, j in Srel we apply [i-j]th linear transformation ([j-i]th if bidirectional and j>i) to Qi. Naturally, this limits maximum sequence length.
+Similar to regular attention, but now the attention score computation involves an additional matrix Srel: Attention = Softmax((Q*Kt + Srel)/sqrt(dim)). To compute Srel, we learn max_length linear transformations for each head (max_length x 2 if bidirectional). To obtain an entry i, j in Srel we apply [i-j]th linear transformation ([j-i]th if bidirectional and j>i) to Qi. Naturally, this limits maximum sequence length.
 
 When used in combination with sinusoidal positional encoding, it allows the transformer to attend to both relative and absolute positions. In theory it should perform better than RoPE in tasks that don't require long attention windows, due to higher flexibility.
 
