@@ -51,8 +51,8 @@ class RelativeGlobalAttention(nn.Module):
             if self.kv_cache!=None:
 
                 c_k, c_v = self.kv_cache
-                k = torch.cat((c_k, k), dim=-2)
-                v = torch.cat((c_v, v), dim=-2) 
+                k = torch.cat((c_k[..., -self.max_seq+1:, :], k), dim=-2)
+                v = torch.cat((c_v[..., -self.max_seq+1:, :], v), dim=-2)  
 
                 Srel = self._compute_single_srel(q, k.shape[-2])
             else:
